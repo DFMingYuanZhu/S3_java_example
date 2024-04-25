@@ -23,7 +23,7 @@ public class DownloadFile {
 
         Regions clientRegion = Regions.US_EAST_1;
         String bucketName = "bucket-mzhu-test1";
-        String objectKey = "presign/test1.txt";
+        String objectKey = "s3_test";
         long expirationTimeMillis = 3600000; // 1 hour
         AWSCredentials credentials = new BasicAWSCredentials(
                 "", "");
@@ -41,7 +41,7 @@ public class DownloadFile {
                         .withMethod(HttpMethod.GET)
                         .withExpiration(expiration);
         //generatePresignedUrlRequest.putCustomRequestHeader("x-amz-meta-referer", "http://localhost:63342");
-        generatePresignedUrlRequest.addRequestParameter("response-content-disposition", "attachment; filename=\"downloaded-file.txt\"");
+        //generatePresignedUrlRequest.addRequestParameter("response-content-disposition", "attachment; filename=\"downloaded-file.txt\"");
         URL preSignedUrl = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
 
         // Print the pre-signed URL
